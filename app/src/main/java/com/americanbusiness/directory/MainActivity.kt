@@ -99,6 +99,24 @@ class MainActivity : Activity() {
         val body = vertical().apply { setPadding(dp(20), dp(24), dp(20), dp(30)) }
         content.addView(body)
         val heading = text("Explore the directory", 22f, navy, true)
+        val featured = vertical().apply {
+            background = shape(Color.WHITE, 18, Color.rgb(224, 230, 238))
+            setPadding(dp(20), dp(20), dp(20), dp(20))
+        }
+        featured.addView(text("★  FEATURED AMERICAN BUSINESSES", 13f, red, true))
+        addSpace(featured, 10)
+        featured.addView(text("Discover our featured businesses", 20f, navy, true))
+        addSpace(featured, 8)
+        featured.addView(text("Sponsored placements will appear here after payment and administrator approval.", 14f, muted))
+        addSpace(featured, 12)
+        featured.addView(button("Learn about featured placement", blue) {
+            AlertDialog.Builder(this@MainActivity)
+                .setTitle("Front-page advertising")
+                .setMessage("Verified businesses will be able to purchase optional sponsored placement after the secure checkout and review system is connected. Pricing will be announced before checkout. All advertisements require approval.")
+                .setPositiveButton("OK", null).show()
+        })
+        body.addView(featured)
+        addSpace(body, 24)
         body.addView(heading)
         addSpace(body, 6)
         body.addView(text("Verified listings, real local businesses.", 14f, muted))
