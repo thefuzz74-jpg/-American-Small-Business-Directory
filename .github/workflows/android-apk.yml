@@ -25,7 +25,22 @@ jobs:
         with:
           gradle-version: '8.9'
       - name: Build debug APK
-        run: gradle :app:assembleDebug --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          gradle :app:assembleDebug --no-daemon --console=plain 2>&1 | tee build.log
+      - name: Show build errors clearly
+        if: failure()
+        run: |
+          echo "### Android build errors" >> "$GITHUB_STEP_SUMMARY"
+          echo '\`\`\`text' >> "$GITHUB_STEP_SUMMARY"
+          grep -n -E -A 10 'What went wrong|Execution failed|^e: |error:|FAILURE:|Could not resolve|Could not find|Android resource linking failed' build.log | tail -100 >> "$GITHUB_STEP_SUMMARY" || true
+          echo '\`\`\`' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload build log if failed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-error-log
+          path: build.log
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
