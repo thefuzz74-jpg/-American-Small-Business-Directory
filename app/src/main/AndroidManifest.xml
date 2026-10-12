@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application android:icon="@drawable/ic_patriotic_launcher" android:roundIcon="@drawable/ic_patriotic_launcher" android:allowBackup="false" android:label="American Small Business Directory" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:supportsRtl="true">
+        <activity android:name=".OwnerDashboardActivity" android:exported="false" />
         <activity android:name=".BusinessApplicationActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
