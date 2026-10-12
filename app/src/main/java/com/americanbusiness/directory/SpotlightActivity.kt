@@ -37,10 +37,10 @@ class SpotlightActivity : Activity() {
             textSize = 15f
             setPadding(0, dp(12), 0, dp(20))
         })
-        val type = Spinner(this)
-        type.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,
+        val spotlightTypeSpinner = Spinner(this)
+        spotlightTypeSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,
             listOf("Product", "Service", "Sale", "Event"))
-        root.addView(type)
+        root.addView(spotlightTypeSpinner)
         val title = input("Spotlight title *")
         val description = input("Describe the product, service or offer")
         description.minLines = 4
@@ -69,7 +69,7 @@ class SpotlightActivity : Activity() {
                 } else {
                     AlertDialog.Builder(this@SpotlightActivity)
                         .setTitle("Spotlight preview")
-                        .setMessage("Type: ${type.selectedItem}\nTitle: ${title.text}\nPrice: ${price.text}\nPhoto selected: ${selectedPhoto != null}\n\nThis is a local preview only. It has NOT been uploaded, submitted for approval, or published. Secure owner login and administrator review must be connected first.")
+                        .setMessage("Type: ${spotlightTypeSpinner.selectedItem}\nTitle: ${title.text}\nPrice: ${price.text}\nPhoto selected: ${selectedPhoto != null}\n\nThis is a local preview only. It has NOT been uploaded, submitted for approval, or published. Secure owner login and administrator review must be connected first.")
                         .setPositiveButton("OK", null).show()
                 }
             }
