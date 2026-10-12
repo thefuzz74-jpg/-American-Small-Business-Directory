@@ -153,7 +153,7 @@ class MainActivity : Activity() {
             setBackgroundColor(Color.WHITE)
             setPadding(dp(12), dp(12), dp(12), dp(12))
         }
-        listOf("⌂  Discover", "✓  Verified", "＋  List business").forEachIndexed { i, label ->
+        listOf("⌂  Discover", "✓  Verified", "▣  Owner Center").forEachIndexed { i, label ->
             val item = text(label, 12f, if (i == 0) navy else muted, i == 0).apply {
                 gravity = Gravity.CENTER
                 setPadding(dp(5), dp(10), dp(5), dp(10))
@@ -162,7 +162,7 @@ class MainActivity : Activity() {
                         .setTitle("Verified listings")
                         .setMessage("Businesses must be reviewed and have an active subscription before appearing in search.")
                         .setPositiveButton("OK", null).show()
-                    else if (i == 2) join.requestFocus()
+                    else if (i == 2) startActivity(Intent(this@MainActivity, OwnerDashboardActivity::class.java))
                     else scroll.smoothScrollTo(0, 0)
                 }
             }
