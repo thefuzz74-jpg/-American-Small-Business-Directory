@@ -60,6 +60,7 @@ class OwnerDashboardActivity : Activity() {
             text = "Create product or service spotlight"
             setOnClickListener { startActivity(Intent(this@OwnerDashboardActivity, SpotlightActivity::class.java)) }
         })
+        action(content, "Front-page featured advertising — $4.99 / 30 days", "Optional sponsored placement costs $4.99 for 30 days, in addition to the $1.99 monthly listing. Every placement needs administrator approval and verified payment. Checkout is not yet connected.")
         action(content, "View subscription", "The listing price is $1.99/month after verification. No payment is collected in this preview.")
         action(content, "Application status", "Applications will show pending, needs information, approved, or rejected once secure submissions are enabled.")
         content.addView(text("Apply for verification", 19f, true).apply { setPadding(0, dp(24), 0, dp(12)) })
