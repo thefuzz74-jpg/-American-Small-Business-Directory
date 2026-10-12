@@ -9,6 +9,9 @@ create table if not exists featured_placements (
  image_object_key text,
  review_status text not null default 'pending' check(review_status in ('pending','approved','rejected','needs_changes')),
  payment_status text not null default 'unpaid' check(payment_status in ('unpaid','paid','refunded')),
+ price_cents integer not null default 499 check (price_cents = 499),
+ duration_days integer not null default 30 check (duration_days = 30),
+ currency text not null default 'usd' check (currency = 'usd'),
  payment_provider_reference text unique,
  starts_at timestamptz,
  ends_at timestamptz,
@@ -16,6 +19,8 @@ create table if not exists featured_placements (
  reviewed_at timestamptz,
  created_at timestamptz not null default now()
 );
+-- $4.99 USD purchases one 30-day placement, not a recurring subscription.
+-- Start and end dates must be assigned by the trusted backend only after payment and approval.
 -- Never trust a client-set payment status or admin approval.
 create or replace view public_featured_placements as
  select f.id, f.business_id, f.headline, f.description, f.image_object_key,
