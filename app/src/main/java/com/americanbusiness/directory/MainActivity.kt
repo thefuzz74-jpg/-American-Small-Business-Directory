@@ -22,7 +22,7 @@ class MainActivity : Activity() {
     private val blue = Color.rgb(35, 74, 124)
     private val red = Color.rgb(180, 48, 59)
     private val muted = Color.rgb(100, 116, 139)
-    private val background = Color.rgb(246, 248, 251)
+    private val pageBackgroundColor = Color.rgb(246, 248, 251)
     private val businesses = emptyList<Business>() // Replace only with verified backend records.
     private lateinit var results: LinearLayout
     private lateinit var search: EditText
@@ -60,7 +60,7 @@ class MainActivity : Activity() {
         window.statusBarColor = navy
         window.navigationBarColor = Color.rgb(236, 240, 245)
 
-        val page = vertical().apply { setBackgroundColor(background) }
+        val page = vertical().apply { setBackgroundColor(pageBackgroundColor) }
         val scroll = ScrollView(this).apply { isFillViewport = true }
         val content = vertical()
         scroll.addView(content)
