@@ -27,4 +27,4 @@ Android-first directory for independently owned, U.S.-owned small businesses.
 ## Architecture
 Android app (Kotlin/Jetpack Compose), backend authentication and database, protected document storage, server-side payment integration, and a separate admin review interface.
 
-**Status:** Project specification initialized. Android source code, payment integration, and APK workflow have not yet been implemented. Never treat a client-side payment flag as proof of payment.
+**Status:** An initial Android WebView prototype and GitHub Actions debug APK build workflow have been added. The prototype displays the Business Spotlight preview; production directory features, authentication, secure photo uploads, admin approval, and payment integration remain unimplemented. The APK build has not been verified as successful. Never treat a client-side payment flag as proof of payment.
