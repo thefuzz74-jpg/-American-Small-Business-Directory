@@ -56,7 +56,10 @@ class OwnerDashboardActivity : Activity() {
         content.addView(heading)
         action(content, "Edit business profile", "Profile editing will become available after secure account sign-in is connected.")
         action(content, "Upload storefront photos", "Photos will be uploaded to protected storage after the backend is connected.")
-        action(content, "Post a promotion", "Approved businesses will be able to publish offers and events.")
+        content.addView(Button(this).apply {
+            text = "Create product or service spotlight"
+            setOnClickListener { startActivity(Intent(this@OwnerDashboardActivity, SpotlightActivity::class.java)) }
+        })
         action(content, "View subscription", "The listing price is $1.99/month after verification. No payment is collected in this preview.")
         action(content, "Application status", "Applications will show pending, needs information, approved, or rejected once secure submissions are enabled.")
         content.addView(text("Apply for verification", 19f, true).apply { setPadding(0, dp(24), 0, dp(12)) })
