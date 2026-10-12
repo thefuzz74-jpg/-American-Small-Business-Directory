@@ -142,10 +142,7 @@ class MainActivity : Activity() {
         join.addView(text("$1.99 / month after approval", 17f, red, true))
         addSpace(join, 16)
         join.addView(button("Apply to be listed  →", red) {
-            AlertDialog.Builder(this)
-                .setTitle("Business applications")
-                .setMessage("Secure applications and subscription checkout are not available yet. No payment will be collected in this preview. Businesses must pass ownership verification and administrator review.")
-                .setPositiveButton("Got it", null).show()
+            startActivity(Intent(this@MainActivity, BusinessApplicationActivity::class.java))
         })
         body.addView(join)
         addSpace(body, 18)
